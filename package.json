@@ -1,0 +1,30 @@
+{
+  "name": "graphql-server",
+  "version": "1.0.0",
+  "description": "Graphql Server for Ecommerce",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon ./server.js --exec babel-node -e js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jorgejimenez98/mern-apollo-graphql-ecommerce.git"
+  },
+  "author": "Jorge Jimenez Diaz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jorgejimenez98/mern-apollo-graphql-ecommerce/issues"
+  },
+  "homepage": "https://github.com/jorgejimenez98/mern-apollo-graphql-ecommerce#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.0.12",
+    "nodemon": "^2.0.14"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-0": "^6.24.1"
+  }
+}
