@@ -10,7 +10,15 @@ app.get("/", (req, res) => {
 });
 
 // Root Resolver for Graphql
-const root = { hola: () => "Hola mundo desde Graphql" };
+const root = { client: () => {
+    return {
+        "id": "1",
+        "name": "Jorge",
+        "lastname": "Jimenez",
+        "company": "UC",
+        "email": "jorge@gmail.com"
+    }
+} };
 
 app.use(
   "/graphql",
