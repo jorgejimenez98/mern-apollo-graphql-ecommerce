@@ -1,11 +1,13 @@
 // Root Resolver for Graphql
 class Client {
-  constructor(id, { name, lastname, company, email }) {
+  constructor(id, { name, lastname, company, email, age, type }) {
     this.id = id;
     this.name = name;
     this.lastname = lastname;
     this.company = company;
     this.email = email;
+    this.age = age;
+    this.type = type;
   }
 }
 
