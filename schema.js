@@ -6,16 +6,19 @@ const schema = buildSchema(`
         name: String
         lastname: String
         company: String
-        email: String
+        emails: [Email]
         age: Int
         type: ClientType
         orders: [Order]
     }
 
     type Order {
-        id: ID
         product: String
         price: Int
+    }
+
+    type Email {
+        email: String
     }
 
     enum ClientType {
@@ -32,7 +35,7 @@ const schema = buildSchema(`
         name: String!
         lastname: String!
         company: String!
-        email: String! 
+        emails: [EmailInput] 
         age: Int!
         type: ClientType!
         orders: [ProductInput]
@@ -42,6 +45,10 @@ const schema = buildSchema(`
         id: ID
         product: String!
         price: Int!
+    }
+
+    input EmailInput {
+        email: String!
     }
 
     type Mutation {
