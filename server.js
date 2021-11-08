@@ -10,6 +10,18 @@ app.get("/", (req, res) => {
 });
 
 // Root Resolver for Graphql
+class Client {
+  constructor(id, { name, lastname, company, email }) {
+    this.id = id;
+    this.name = name;
+    this.lastname = lastname;
+    this.company = company;
+    this.email = email;
+  }
+}
+
+const clientsDB = [];
+
 const root = {
   client: () => {
     return {
@@ -17,8 +29,13 @@ const root = {
       name: "Jorge",
       lastname: "Jimenez",
       company: "UC",
-      emails: [{ email: "jorge@gmail.com" }, { email: "jorge@gmail.com" }],
+      email: "jorge@gmail.com",
     };
+  },
+  createClient: ({ input }) => {
+    const id = require("crypto").randomBytes(10).toString("hex");
+    clientsDB[id] = input;
+    return new Client(id, input);
   },
 };
 
