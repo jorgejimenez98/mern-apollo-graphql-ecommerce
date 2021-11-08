@@ -4,40 +4,11 @@ const app = express();
 // Graphql imports
 const { graphqlHTTP } = require("express-graphql");
 const schema = require("./schema");
+const resolvers = require("./resolvers");
 
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
-
-// Root Resolver for Graphql
-class Client {
-  constructor(id, { name, lastname, company, email }) {
-    this.id = id;
-    this.name = name;
-    this.lastname = lastname;
-    this.company = company;
-    this.email = email;
-  }
-}
-
-const clientsDB = [];
-
-const root = {
-  client: () => {
-    return {
-      id: "1",
-      name: "Jorge",
-      lastname: "Jimenez",
-      company: "UC",
-      email: "jorge@gmail.com",
-    };
-  },
-  createClient: ({ input }) => {
-    const id = require("crypto").randomBytes(10).toString("hex");
-    clientsDB[id] = input;
-    return new Client(id, input);
-  },
-};
 
 app.use(
   "/graphql",
@@ -45,7 +16,7 @@ app.use(
     // Parsin schema
     schema,
     // Resolver as root value
-    rootValue: root,
+    rootValue: resolvers,
     //  use Graphiql
     graphiql: true,
   })
