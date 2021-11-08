@@ -10,15 +10,17 @@ app.get("/", (req, res) => {
 });
 
 // Root Resolver for Graphql
-const root = { client: () => {
+const root = {
+  client: () => {
     return {
-        "id": "1",
-        "name": "Jorge",
-        "lastname": "Jimenez",
-        "company": "UC",
-        "email": "jorge@gmail.com"
-    }
-} };
+      id: "1",
+      name: "Jorge",
+      lastname: "Jimenez",
+      company: "UC",
+      emails: [{ email: "jorge@gmail.com" }, { email: "jorge@gmail.com" }],
+    };
+  },
+};
 
 app.use(
   "/graphql",
