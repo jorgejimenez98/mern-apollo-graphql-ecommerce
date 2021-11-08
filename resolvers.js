@@ -1,6 +1,6 @@
 // Root Resolver for Graphql
 class Client {
-  constructor(id, { name, lastname, company, email, age, type }) {
+  constructor(id, { name, lastname, company, email, age, type, orders }) {
     this.id = id;
     this.name = name;
     this.lastname = lastname;
@@ -8,6 +8,7 @@ class Client {
     this.email = email;
     this.age = age;
     this.type = type;
+    this.orders = orders;
   }
 }
 
