@@ -1,6 +1,6 @@
-const buildschema = require("graphql");
+const { buildSchema } = require("graphql");
 
-const schema = buildschema(`
+const schema = buildSchema(`
     type Query {
         hola: String
     }
