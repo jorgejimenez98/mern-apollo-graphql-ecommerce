@@ -2,12 +2,12 @@ const express = require("express");
 const app = express();
 
 // Dependencies
-require("./db");
+require("./data/db");
 
 // Graphql imports
 const { graphqlHTTP } = require("express-graphql");
-const schema = require("./schema");
-const resolvers = require("./resolvers");
+const schema = require("./data/schema");
+const resolvers = require("./data/resolvers");
 
 app.get("/", (req, res) => {
   res.send("Hello World");
