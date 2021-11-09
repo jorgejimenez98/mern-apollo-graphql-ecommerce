@@ -1,6 +1,9 @@
 const express = require("express");
 const app = express();
 
+// Dependencies
+require("./db");
+
 // Graphql imports
 const { graphqlHTTP } = require("express-graphql");
 const schema = require("./schema");
