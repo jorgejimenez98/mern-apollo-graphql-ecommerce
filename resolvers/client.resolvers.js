@@ -11,8 +11,8 @@ const clientsDB = [];
 const clientResolvers = {
   Query: {
     // Get Clients List
-    getClientsList: () => {
-      return Client.find({});
+    getClientsList: (root, { limit }) => {
+      return Client.find({}).limit(limit);
     },
     // Get Client By ID
     getClient: ({ id }) => {
