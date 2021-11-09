@@ -15,13 +15,17 @@ class Client {
 const clientsDB = [];
 
 const resolvers = {
-  getClient: ({ id }) => {
-    return new Client(id, clientsDB[id]);
+  Query: {
+    getClient: ({ id }) => {
+      return new Client(id, clientsDB[id]);
+    },
   },
-  createClient: ({ input }) => {
-    const id = require("crypto").randomBytes(10).toString("hex");
-    clientsDB[id] = input;
-    return new Client(id, input);
+  Mutation: {
+    createClient: ({ input }) => {
+      const id = require("crypto").randomBytes(10).toString("hex");
+      clientsDB[id] = input;
+      return new Client(id, input);
+    },
   },
 };
 
