@@ -27,8 +27,6 @@ const clientResolvers = {
         type: input.type,
         orders: input.orders,
       });
-      // Set ID
-      newClient.id = newClient._id;
 
       // Return Promise
       return new Promise((resolve, object) => {
@@ -40,12 +38,13 @@ const clientResolvers = {
         });
       });
     },
+
     // Update Client Mutation
     updateClient: (root, { input }) => {
       return new Promise((resolve, object) => {
         Client.findByIdAndUpdate(
           { _id: input.id }, // Filter
-          input, // New Values 
+          input, // New Values
           { new: true }, // Return new Updated values
           (error, newClient) => {
             // Check Error
