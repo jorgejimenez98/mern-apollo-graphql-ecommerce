@@ -1,4 +1,4 @@
-const resolvers = require("./resolvers");
+const resolvers = require("../resolvers");
 const { importSchema } = require("graphql-import");
 import { makeExecutableSchema } from "@graphql-tools/schema";
 
