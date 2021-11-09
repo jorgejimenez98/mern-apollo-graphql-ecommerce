@@ -8,7 +8,7 @@ const Client = require("../model/client.model");
 
 const clientsDB = [];
 
-const resolvers = {
+const clientResolvers = {
   Query: {
     getClient: ({ id }) => {
       return new Client(id, clientsDB[id]);
@@ -40,8 +40,25 @@ const resolvers = {
         });
       });
     },
-    // New Mutation Goes Here
+    // Update Client Mutation
+    updateClient: (root, { input }) => {
+      return new Promise((resolve, object) => {
+        Client.findByIdAndUpdate(
+          { _id: input.id }, // Filter
+          input, // New Values 
+          { new: true }, // Return new Updated values
+          (error, newClient) => {
+            // Check Error
+            if (error) rejects(error);
+            // Return new Client
+            else resolve(newClient);
+          }
+        );
+      });
+    },
+
+    // Nex Mutation Here
   },
 };
 
-module.exports = resolvers;
+module.exports = clientResolvers;
