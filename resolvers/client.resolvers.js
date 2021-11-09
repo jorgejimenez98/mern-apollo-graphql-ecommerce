@@ -10,6 +10,11 @@ const clientsDB = [];
 
 const clientResolvers = {
   Query: {
+    // Get Clients List
+    getClientsList: () => {
+      return Client.find({});
+    },
+    // Get Client By ID
     getClient: ({ id }) => {
       return new Client(id, clientsDB[id]);
     },
