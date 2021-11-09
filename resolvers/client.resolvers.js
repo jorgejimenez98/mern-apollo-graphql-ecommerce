@@ -7,11 +7,17 @@ const Client = require("../model/client.model");
 // Client Resolver
 const clientResolvers = {
   // Queries
-
   Query: {
     // Get Clients List
     getClientsList: (root, { limit }) => {
-      return Client.find({}).limit(limit);
+      return new Promise((resolve, object) => {
+        Client.find({}, (error, data) => {
+          // Check Error
+          if (error) rejects(error);
+          // Return new Client
+          else resolve(data);
+        }).limit(limit);
+      });
     },
 
     // Get Client By ID
