@@ -4,21 +4,34 @@ const { resolve } = require("path");
 // Models
 const Client = require("../model/client.model");
 
-// Root Resolver for Graphql
-
-const clientsDB = [];
-
+// Client Resolver
 const clientResolvers = {
+  // Queries
+
   Query: {
     // Get Clients List
     getClientsList: (root, { limit }) => {
       return Client.find({}).limit(limit);
     },
+
     // Get Client By ID
-    getClient: ({ id }) => {
-      return new Client(id, clientsDB[id]);
+    getClient: (root, { id }) => {
+      // Return promise consult
+      return new Promise((resolve, object) => {
+        // Get Client from Mongo DB
+        Client.findById(id, (error, client) => {
+          // Check Error
+          if (error) rejects(error);
+          // Return new Client
+          else resolve(client);
+        });
+      });
     },
+
+    // Nex Query Here
   },
+
+  // Mutations
   Mutation: {
     // Create Client Mutation
     createClient: (root, { input }) => {
