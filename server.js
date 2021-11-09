@@ -7,19 +7,13 @@ require("./data/db");
 // Graphql imports
 const { graphqlHTTP } = require("express-graphql");
 const schema = require("./data/schema");
-const resolvers = require("./data/resolvers");
 
-app.get("/", (req, res) => {
-  res.send("Hello World");
-});
-
+// Middlewares
 app.use(
   "/graphql",
   graphqlHTTP({
     // Parsin schema
     schema,
-    // Resolver as root value
-    rootValue: resolvers,
     //  use Graphiql
     graphiql: true,
   })
