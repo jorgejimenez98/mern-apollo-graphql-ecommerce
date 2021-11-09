@@ -74,4 +74,8 @@ type Mutation {
    Allow to create new clients
   """
   createClient(input: ClientInput): Client
+  """
+   Allow to Update new clients
+  """
+  updateClient(input: ClientInput): Client
 }
