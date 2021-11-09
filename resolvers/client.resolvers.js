@@ -56,6 +56,19 @@ const clientResolvers = {
       });
     },
 
+    // Delete Client Mutation
+    deleteClient: (root, { id }) => {
+      return new Promise((resolve, object) => {
+        // Delete Client from Mongoose by ID
+        Client.findByIdAndRemove(id, (error) => {
+          // Check error
+          if (error) rejects(error);
+          // Return Response
+          else resolve("Client Deleted Successfully");
+        });
+      });
+    },
+
     // Nex Mutation Here
   },
 };
