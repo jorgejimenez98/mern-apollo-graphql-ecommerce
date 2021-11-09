@@ -35,7 +35,7 @@ type Query {
 # ----------- INPUTS
 
 """
- Input to Create a new Client
+Input to Create a new Client
 """
 input ClientInput {
   id: ID
@@ -49,7 +49,7 @@ input ClientInput {
 }
 
 """
- Input to Create a new Product
+Input to Create a new Product
 """
 input ProductInput {
   id: ID
@@ -58,7 +58,7 @@ input ProductInput {
 }
 
 """
- Input to create a new Email
+Input to create a new Email
 """
 input EmailInput {
   email: String!
@@ -67,15 +67,19 @@ input EmailInput {
 # ----------- Mutations
 
 """
- Clients Mutations
+Clients Mutations
 """
 type Mutation {
   """
-   Allow to create new clients
+  Allow to create new clients
   """
   createClient(input: ClientInput): Client
   """
-   Allow to Update new clients
+  Allow to Update a client
   """
   updateClient(input: ClientInput): Client
+  """
+  Allow to Delete a client
+  """
+  deleteClient(id: ID): String
 }
