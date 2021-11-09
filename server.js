@@ -1,22 +1,27 @@
 const express = require("express");
-const app = express();
 
 // Dependencies
 require("./data/db");
 
 // Graphql imports
-const { graphqlHTTP } = require("express-graphql");
-const schema = require("./data/schema");
+const { ApolloServer } = require("apollo-server-express");
+const typeDefs = require("./data/schema");
+const resolvers = require("./resolvers");
 
-// Middlewares
-app.use(
-  "/graphql",
-  graphqlHTTP({
-    // Parsin schema
-    schema,
-    //  use Graphiql
-    graphiql: true,
-  })
-);
+// Start Apollo Server Function
+async function startApolloServer(typeDefs, resolvers) {
+  // Create Apps Instance
+  const app = express();
+  const server = new ApolloServer({ typeDefs, resolvers });
 
-app.listen(5000, () => console.log("Server running on http://localhost:5000"));
+  // Middlewares
+  await server.start();
+  server.applyMiddleware({ app });
+
+  // Start App
+  const url = `http://localhost:5000${server.graphqlPath}`;
+  app.listen({ port: 5000 }, () => console.log(`Server Running on ${url}`));
+}
+
+// Call Start Server Function
+startApolloServer(typeDefs, resolvers);
