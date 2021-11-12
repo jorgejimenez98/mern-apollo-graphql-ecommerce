@@ -1,6 +1,6 @@
-import Tooltip from "@mui/material/Tooltip";
-import IconButton from "@mui/material/IconButton";
-import EditIcon from "@mui/icons-material/Edit";
+import { LinkContainer } from "react-router-bootstrap";
+import { Tooltip, IconButton } from "@material-ui/core";
+import EditIcon from "@material-ui/icons/Edit";
 
 export const clientColumns = [
   {
@@ -37,9 +37,9 @@ export const clientColumns = [
     name: "company",
     label: "Company",
     options: {
-      filter: false,
-      sort: false,
-      viewColumns: false,
+      filter: true,
+      sort: true,
+      viewColumns: true,
       customBodyRender: (company) => {
         return <p>{company}</p>;
       },
