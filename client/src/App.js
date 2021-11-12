@@ -1,6 +1,6 @@
 import React from "react";
 // Components
-import { ScrollTop } from "./components";
+import { ScrollTop, Header } from "./components";
 // Apollo Deps
 import { ApolloProvider } from "react-apollo";
 import ApolloClient from "apollo-boost";
@@ -19,6 +19,7 @@ function App() {
     /* Init Apollo Provider */
     <ApolloProvider client={client}>
       {/* Components APP goes here */}
+      <Header />
       <ScrollTop />
     </ApolloProvider>
   );
