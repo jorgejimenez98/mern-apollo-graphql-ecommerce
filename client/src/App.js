@@ -1,6 +1,8 @@
 import React from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 // Components
-import { ScrollTop, Header } from "./components";
+import { Page403, TheLayout } from "./components";
+import { Login } from "./screens";
 // Apollo Deps
 import { ApolloProvider } from "react-apollo";
 import ApolloClient from "apollo-boost";
@@ -19,8 +21,13 @@ function App() {
     /* Init Apollo Provider */
     <ApolloProvider client={client}>
       {/* Components APP goes here */}
-      <Header />
-      <ScrollTop />
+      <BrowserRouter>
+        <Switch>
+          <Route path="/" exact render={(props) => <TheLayout {...props} />} />
+          <Route path="/403" render={(props) => <Page403 {...props} />} />
+          <Route path="/login" render={(props) => <Login {...props} />} />
+        </Switch>
+      </BrowserRouter>
     </ApolloProvider>
   );
 }
