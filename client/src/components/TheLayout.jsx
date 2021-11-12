@@ -1,6 +1,6 @@
 import React from "react";
 import { Header, ScrollTop } from "./index";
-import { routes } from "../routes";
+import routes from "../routes";
 import {
   BrowserRouter as Router,
   Route,
@@ -29,8 +29,6 @@ function TheLayout() {
           })}
           <Redirect from="/" to="/clients/list" />
         </Switch>
-        <Footer />
-        <ScrollTop />
       </div>
     </Router>
   );
