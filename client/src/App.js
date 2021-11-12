@@ -1,9 +1,11 @@
 import React from "react";
+// Components
+import { ScrollTop } from "./components";
 // Apollo Deps
 import { ApolloProvider } from "react-apollo";
 import ApolloClient from "apollo-boost";
 
-// Apollo Client
+// Apollo Client Extension: Apollo-Devs-Tools
 const client = new ApolloClient({
   uri: "http://localhost:5000/graphql",
   onError: ({ netWorkError, graphqlError }) => {
@@ -17,7 +19,7 @@ function App() {
     /* Init Apollo Provider */
     <ApolloProvider client={client}>
       {/* Components APP goes here */}
-      <h1>Hello World</h1>
+      <ScrollTop />
     </ApolloProvider>
   );
 }
