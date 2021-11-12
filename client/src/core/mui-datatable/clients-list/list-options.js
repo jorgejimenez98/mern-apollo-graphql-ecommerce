@@ -9,5 +9,3 @@ export const clientlistOptions = {
   viewColumns: true,
   filter: true,
 };
-
-export default pizzalistOptions;
