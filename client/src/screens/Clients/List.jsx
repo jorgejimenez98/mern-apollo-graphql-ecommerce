@@ -5,6 +5,10 @@ import { Loader, Message } from "../../components";
 import { TableClients } from "../../core/mui-datatable";
 
 const ClientsList = () => {
+  const confirmDelete = (id) => {
+    console.log("Delete", id);
+  };
+
   return (
     <Query query={CLIENTS_QUERY}>
       {/* Show Consult States */}
@@ -17,7 +21,10 @@ const ClientsList = () => {
               <Message text={error.message} type="error" />
             ) : (
               data?.getClientsList && (
-                <TableClients data={data.getClientsList} />
+                <TableClients
+                  data={data.getClientsList}
+                  confirmDelete={confirmDelete}
+                />
               )
             )}
           </React.Fragment>
