@@ -23,9 +23,9 @@ function App() {
       {/* Components APP goes here */}
       <BrowserRouter>
         <Switch>
-          <Route path="/" exact render={(props) => <TheLayout {...props} />} />
-          <Route path="/403" render={(props) => <Page403 {...props} />} />
-          <Route path="/login" render={(props) => <Login {...props} />} />
+          <Route path="/" render={(props) => <TheLayout {...props} />} />
+          <Route path="/403" exact render={(props) => <Page403 {...props} />} />
+          <Route path="/login" exact render={(props) => <Login {...props} />} />
         </Switch>
       </BrowserRouter>
     </ApolloProvider>
