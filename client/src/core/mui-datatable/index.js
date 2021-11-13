@@ -1,4 +1,3 @@
-import { clientColumns } from "./clients-list/columns";
-import { clientlistOptions } from "./clients-list/list-options";
+import TableClients from "./clients-list/TableClients";
 
-export { clientColumns, clientlistOptions };
+export { TableClients };
