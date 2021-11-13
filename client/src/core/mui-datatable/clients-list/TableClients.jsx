@@ -1,37 +1,74 @@
 import React from "react";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
+import { LinkContainer } from "react-router-bootstrap";
+import { Edit, Delete, ShoppingCart } from "@mui/icons-material";
+import {
+  IconButton,
+  Tooltip,
+  Zoom,
+  List,
+  ListItem,
+  Divider,
+  ListItemText,
+  ListItemSecondaryAction,
+} from "@mui/material";
 
 function TableClients({ data }) {
   return (
     <div className="container mt-3">
-      <TableContainer component={Paper}>
-        <Table aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Name</TableCell>
-              <TableCell>Company</TableCell>
-              <TableCell align="right">Actions</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {data.map((row) => (
-              <TableRow key={row.id}>
-                <TableCell component="th" scope="row">
-                  {row.name} {row.lastname}
-                </TableCell>
-                <TableCell>{row.company}</TableCell>
-                <TableCell align="right">Accions</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+      <List>
+        {data.map((row) => (
+          <React.Fragment key={row.id}>
+            <ListItem dense button style={{ height: "4em" }}>
+              <ListItemText
+                id={`label-${row.id}`}
+                primary={
+                  <strong>{`${row.name} ${row.lastname} (${row.company})`}</strong>
+                }
+              />
+              <ListItemSecondaryAction>
+                {/* EDIT */}
+                <LinkContainer to={`/client/orders/${row.id}`}>
+                  <Tooltip
+                    title={`Look Orders of ${row.name} ${row.lastname}`}
+                    placement="bottom"
+                    aria-label="orders"
+                    TransitionComponent={Zoom}
+                  >
+                    <IconButton>
+                      <ShoppingCart />
+                    </IconButton>
+                  </Tooltip>
+                </LinkContainer>
+                {/* EDIT */}
+                <LinkContainer to={`/client/edit/${row.id}`}>
+                  <Tooltip
+                    title={`Edit Client ${row.name} ${row.lastname}`}
+                    placement="bottom"
+                    aria-label="edit"
+                    TransitionComponent={Zoom}
+                  >
+                    <IconButton>
+                      <Edit />
+                    </IconButton>
+                  </Tooltip>
+                </LinkContainer>
+                {/* DELETE */}
+                <Tooltip
+                  title={`Deleet Client ${row.name} ${row.lastname}`}
+                  placement="bottom"
+                  aria-label="delete"
+                  TransitionComponent={Zoom}
+                >
+                  <IconButton>
+                    <Delete />
+                  </IconButton>
+                </Tooltip>
+              </ListItemSecondaryAction>
+            </ListItem>
+            <Divider />
+          </React.Fragment>
+        ))}
+      </List>
     </div>
   );
 }
