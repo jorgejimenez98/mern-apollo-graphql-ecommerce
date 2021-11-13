@@ -1,7 +1,6 @@
 import * as React from "react";
-import { Box, IconButton, Collapse } from "@material-ui/core";
-import CloseIcon from "@material-ui/icons/Close";
-import Alert from "@material-ui/lab/Alert";
+import { Box, IconButton, Collapse, Alert } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 
 export default function Message(text, type) {
   const [open, setOpen] = React.useState(true);

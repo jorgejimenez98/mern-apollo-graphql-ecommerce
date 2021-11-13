@@ -1,22 +1,13 @@
-import React from "react";
+import * as React from "react";
 import PropTypes from "prop-types";
-import { makeStyles } from "@material-ui/core/styles";
-import useScrollTrigger from "@material-ui/core/useScrollTrigger";
-import Fab from "@material-ui/core/Fab";
-import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
-import Zoom from "@material-ui/core/Zoom";
+import useScrollTrigger from "@mui/material/useScrollTrigger";
+import Box from "@mui/material/Box";
+import Fab from "@mui/material/Fab";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import Zoom from "@mui/material/Zoom";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    position: "fixed",
-    bottom: theme.spacing(2),
-    right: theme.spacing(2),
-  },
-}));
-
-function ScrollTop(props) {
+export default function ScrollTop(props) {
   const { window } = props;
-  const classes = useStyles();
 
   const trigger = useScrollTrigger({
     target: window ? window() : undefined,
@@ -30,17 +21,24 @@ function ScrollTop(props) {
     );
 
     if (anchor) {
-      anchor.scrollIntoView({ behavior: "smooth", block: "center" });
+      anchor.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
     }
   };
 
   return (
     <Zoom in={trigger}>
-      <div onClick={handleClick} role="presentation" className={classes.root}>
+      <Box
+        onClick={handleClick}
+        role="presentation"
+        sx={{ position: "fixed", bottom: 16, right: 16 }}
+      >
         <Fab color="secondary" size="small" aria-label="scroll back to top">
           <KeyboardArrowUpIcon />
         </Fab>
-      </div>
+      </Box>
     </Zoom>
   );
 }
@@ -48,5 +46,3 @@ function ScrollTop(props) {
 ScrollTop.propTypes = {
   window: PropTypes.func,
 };
-
-export default ScrollTop;
