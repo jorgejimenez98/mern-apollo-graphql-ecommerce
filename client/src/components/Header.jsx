@@ -35,7 +35,9 @@ export default function Header() {
             </Typography>
           </LinkContainer>
 
-          <Button color="inherit">New Client</Button>
+          <LinkContainer to="/client/add">
+            <Button color="inherit">New Client</Button>
+          </LinkContainer>
         </Toolbar>
       </AppBar>
     </Box>
