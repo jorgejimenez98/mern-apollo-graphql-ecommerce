@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { ConfirmDialog } from "../../../components";
 import { LinkContainer } from "react-router-bootstrap";
 import { Edit, Delete, ShoppingCart } from "@mui/icons-material";
 import {
@@ -12,7 +13,28 @@ import {
   ListItemSecondaryAction,
 } from "@mui/material";
 
-function TableClients({ data }) {
+function TableClients({ data, confirmDelete }) {
+  const [open, setOpen] = useState(false);
+  const [nameToDelete, setNameToDelete] = useState("");
+  const [clientId, setClientId] = useState(-1);
+
+  const openDialog = (id, name) => {
+    setOpen(true);
+    setNameToDelete(name);
+    setClientId(id);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+    setNameToDelete("");
+    setClientId(-1);
+  };
+
+  const confirmAgree = () => {
+    confirmDelete(clientId);
+    handleClose();
+  };
+
   return (
     <div className="container mt-3">
       <List>
@@ -59,7 +81,11 @@ function TableClients({ data }) {
                   aria-label="delete"
                   TransitionComponent={Zoom}
                 >
-                  <IconButton>
+                  <IconButton
+                    onClick={() =>
+                      openDialog(row.id, `${row.name} ${row.lastname}`)
+                    }
+                  >
                     <Delete />
                   </IconButton>
                 </Tooltip>
@@ -69,6 +95,14 @@ function TableClients({ data }) {
           </React.Fragment>
         ))}
       </List>
+
+      <ConfirmDialog
+        type={"Client"}
+        name={nameToDelete}
+        open={open}
+        handleClose={handleClose}
+        confirmAgree={confirmAgree}
+      />
     </div>
   );
 }
