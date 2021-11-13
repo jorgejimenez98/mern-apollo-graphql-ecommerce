@@ -1,9 +1,8 @@
 import React from "react";
 import { Query } from "react-apollo";
-import MUIDataTable from "mui-datatables";
 import { CLIENTS_QUERY } from "../../graphql/queries";
 import { Loader, Message } from "../../components";
-import { clientColumns, clientlistOptions } from "../../core/mui-datatable";
+import { TableClients } from "../../core/mui-datatable";
 
 const ClientsList = () => {
   return (
@@ -18,16 +17,7 @@ const ClientsList = () => {
               <Message text={error.message} type="error" />
             ) : (
               data?.getClientsList && (
-                <React.Fragment>
-                  <div className="container mt-3">
-                    <MUIDataTable
-                      title={`Clients List (${data.getClientsList.length})`}
-                      data={data.getClientsList}
-                      columns={clientColumns}
-                      options={clientlistOptions}
-                    />
-                  </div>
-                </React.Fragment>
+                <TableClients data={data.getClientsList} />
               )
             )}
           </React.Fragment>
