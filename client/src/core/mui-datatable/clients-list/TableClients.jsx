@@ -37,6 +37,9 @@ function TableClients({ data, confirmDelete }) {
 
   return (
     <div className="container mt-3">
+      <div className="text-center">
+        <h3 className="text-muted">Clients List</h3>
+      </div>
       <List>
         {data.map((row) => (
           <React.Fragment key={row.id}>
