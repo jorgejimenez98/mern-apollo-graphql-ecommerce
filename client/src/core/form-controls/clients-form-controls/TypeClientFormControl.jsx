@@ -1,7 +1,7 @@
 import React from "react";
 import Form from "react-bootstrap/Form";
 
-function TypeClientFormControl({ formik }) {
+function TypeClientFormControl({ values, handleChange, errors, touched }) {
   return (
     <Form.Group>
       <Form.Label className="float-left">Type Of Client</Form.Label>
@@ -9,16 +9,16 @@ function TypeClientFormControl({ formik }) {
       <select
         className="form-control"
         name="category"
-        value={formik.values.typeOfClient}
-        onChange={formik.handleChange}
+        value={values.typeOfClient}
+        onChange={handleChange}
       >
         <option value="BASIC">Basic</option>
         <option value="PREMIUM">Premium</option>
       </select>
 
-      {formik.touched.typeOfClient && Boolean(formik.errors.typeOfClient) && (
+      {touched.typeOfClient && Boolean(errors.typeOfClient) && (
         <Form.Control.Feedback type="invalid">
-          <span className="float-left">{formik.errors.typeOfClient}</span>
+          <span className="float-left">{errors.typeOfClient}</span>
         </Form.Control.Feedback>
       )}
     </Form.Group>
