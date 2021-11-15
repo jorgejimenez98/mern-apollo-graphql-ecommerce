@@ -1,6 +1,6 @@
 import React from "react";
 
-function NameFormControl({ formik }) {
+function NameFormControl({ values, handleChange, errors, touched }) {
   return (
     <div className="form-group">
       {/* FULL NAME */}
@@ -9,19 +9,19 @@ function NameFormControl({ formik }) {
         type="text"
         id="name"
         name="name"
-        onChange={formik.handleChange}
+        onChange={handleChange}
         className={
-          formik.touched.name && Boolean(formik.errors.name)
+          touched.name && Boolean(errors.name)
             ? "form-control is-invalid"
-            : formik.touched.name && !Boolean(formik.errors.name)
+            : touched.name && !Boolean(errors.name)
             ? "form-control is-valid"
             : "form-control"
         }
-        value={formik.values.name}
+        value={values.name}
         placeholder={"Write here name"}
       />
-      {formik.touched.name && Boolean(formik.errors.name) && (
-        <small className="error-text">{formik.errors.name}</small>
+      {touched.name && Boolean(errors.name) && (
+        <small className="error-text">{errors.name}</small>
       )}
     </div>
   );
