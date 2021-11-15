@@ -9,16 +9,16 @@ function TypeClientFormControl({ values, handleChange, errors, touched }) {
       <select
         className="form-control"
         name="category"
-        value={values.typeOfClient}
+        value={values.type}
         onChange={handleChange}
       >
         <option value="BASIC">Basic</option>
         <option value="PREMIUM">Premium</option>
       </select>
 
-      {touched.typeOfClient && Boolean(errors.typeOfClient) && (
+      {touched.type && Boolean(errors.type) && (
         <Form.Control.Feedback type="invalid">
-          <span className="float-left">{errors.typeOfClient}</span>
+          <span className="float-left">{errors.type}</span>
         </Form.Control.Feedback>
       )}
     </Form.Group>
