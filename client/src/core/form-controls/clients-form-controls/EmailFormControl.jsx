@@ -10,7 +10,7 @@ function EmailFormControl(props) {
         Email #{props.index + 1}
       </Form.Label>
       <Row>
-        <Col md={11}>
+        <Col md={11} sm={10}>
           <Form.Control
             type="email"
             placeholder="Enter email"
@@ -28,7 +28,7 @@ function EmailFormControl(props) {
             </Form.Control.Feedback>
           )}
         </Col>
-        <Col md={1}>
+        <Col md={1} sm={2}>
           {/* DELETE */}
           <Tooltip
             title={`Delete Email`}
