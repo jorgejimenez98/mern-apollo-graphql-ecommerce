@@ -10,3 +10,9 @@ export const CREATE_CLIENT = gql`
     }
   }
 `;
+
+export const DELETE_CLIENT = gql`
+  mutation Mutation($deleteClientId: ID) {
+    deleteClient(id: $deleteClientId)
+  }
+`;
