@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Page403, TheLayout } from "./components";
 import { Login } from "./screens";
 // Apollo Deps
-import { ApolloProvider } from "react-apollo";
+import { ApolloProvider } from "@apollo/client";
 import ApolloClient from "apollo-boost";
 
 // Apollo Client Extension: Apollo-Devs-Tools
