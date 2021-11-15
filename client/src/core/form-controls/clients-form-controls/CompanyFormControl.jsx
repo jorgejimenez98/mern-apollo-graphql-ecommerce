@@ -1,6 +1,6 @@
 import React from "react";
 
-function CompanyFormControl({ formik }) {
+function CompanyFormControl({ values, handleChange, errors, touched }) {
   return (
     <div className="form-group">
       {/* FULL NAME */}
@@ -9,19 +9,19 @@ function CompanyFormControl({ formik }) {
         type="text"
         id="company"
         name="company"
-        onChange={formik.handleChange}
+        onChange={handleChange}
         className={
-          formik.touched.company && Boolean(formik.errors.company)
+          touched.company && Boolean(errors.company)
             ? "form-control is-invalid"
-            : formik.touched.company && !Boolean(formik.errors.company)
+            : touched.company && !Boolean(errors.company)
             ? "form-control is-valid"
             : "form-control"
         }
-        value={formik.values.company}
+        value={values.company}
         placeholder={"Write here company"}
       />
-      {formik.touched.company && Boolean(formik.errors.company) && (
-        <small className="error-text">{formik.errors.company}</small>
+      {touched.company && Boolean(errors.company) && (
+        <small className="error-text">{errors.company}</small>
       )}
     </div>
   );
