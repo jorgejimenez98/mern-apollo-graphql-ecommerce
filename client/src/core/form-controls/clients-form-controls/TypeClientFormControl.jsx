@@ -8,12 +8,12 @@ function TypeClientFormControl({ values, handleChange, errors, touched }) {
 
       <select
         className="form-control"
-        name="category"
+        name="type"
         value={values.type}
         onChange={handleChange}
       >
         <option value="BASIC">Basic</option>
-        <option value="PREMIUM">Premium</option>
+        <option value="PREMIUN">Premium</option>
       </select>
 
       {touched.type && Boolean(errors.type) && (
