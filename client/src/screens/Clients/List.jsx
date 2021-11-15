@@ -5,7 +5,9 @@ import { Loader, Message } from "../../components";
 import { TableClients } from "../../core/mui-datatable";
 
 const ClientsList = () => {
-  const { loading, error, data } = useQuery(CLIENTS_QUERY);
+  const { loading, error, data } = useQuery(CLIENTS_QUERY, {
+    pollInterval: 500,
+  });
 
   const confirmDelete = (id) => {
     console.log("Delete", id);
