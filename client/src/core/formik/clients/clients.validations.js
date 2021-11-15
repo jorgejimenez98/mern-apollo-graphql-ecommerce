@@ -2,7 +2,7 @@ import * as yup from "yup";
 
 export const initialClientValues = {
   name: "",
-  lastName: "",
+  lastname: "",
   company: "",
   emails: [
     {
@@ -10,18 +10,18 @@ export const initialClientValues = {
     },
   ],
   age: "",
-  typeOfClient: "BASIC",
+  type: "BASIC",
 };
 
 export const clientSchema = yup.object().shape({
   name: yup.string().trim().required("Name is required"),
-  lastName: yup.string().trim().required("Last Name is required"),
+  lastname: yup.string().trim().required("Last Name is required"),
   company: yup.string().trim().required("Company is required"),
   age: yup
     .number()
     .positive("Age must be positive")
     .required("Age is required"),
-  typeOfClient: yup.string().trim().required("Type Of Client is required"),
+  type: yup.string().trim().required("Type Of Client is required"),
   emails: yup.array().of(
     yup.object().shape({
       email: yup
