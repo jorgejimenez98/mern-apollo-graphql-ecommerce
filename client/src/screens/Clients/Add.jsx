@@ -11,8 +11,6 @@ import { clientSchema, initialClientValues } from "../../core/formik";
 const Add = ({ history }) => {
   const [createClient, { data, error, loading }] = useMutation(CREATE_CLIENT);
 
-  console.log(data);
-  
   useEffect(() => {
     if (data) {
       history.push("/");
