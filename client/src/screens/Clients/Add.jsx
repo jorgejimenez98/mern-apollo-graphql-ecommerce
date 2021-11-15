@@ -1,66 +1,115 @@
 import React from "react";
-import Button from "@mui/material/Button";
 import { LinkContainer } from "react-router-bootstrap";
+import { Button } from "@mui/material";
+import { Form, Formik } from "formik";
 import { clientForms } from "../../core/form-controls";
-import { useFormik } from "formik";
-import { initialClientValues, clientSchema } from "../../core/formik";
+import { clientSchema, initialClientValues } from "../../core/formik";
 
-function ADD() {
-  const formik = useFormik({
-    initialValues: initialClientValues,
-    validationSchema: clientSchema,
-    validateOnChange: true,
-    validateOnBlur: true,
-    onSubmit: (values) => {
-      console.log("ADD", values);
-    },
-  });
-
+const Add = () => {
   return (
-    <div className="container mt-4">
-      <h3 className="text-muted text-center">ADD Client</h3>
-      <div className="card rounded shadow-sm p-3 mt-4">
-        <form onSubmit={formik.handleSubmit}>
-          <div className="row">
-            <div className="col-md-6">
-              <clientForms.NameFormControl formik={formik} />
-            </div>
-            <div className="col-md-6">
-              <clientForms.LastNameFormControl formik={formik} />
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-md-6">
-              <clientForms.CompanyFormControl formik={formik} />
-            </div>
-            <div className="col-md-6">
-              <clientForms.EmailFormControl formik={formik} />
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-md-6">
-              <clientForms.AgeFormControl formik={formik} />
-            </div>
-            <div className="col-md-6">
-              <clientForms.TypeClientFormControl formik={formik} />
-            </div>
-          </div>
+    <Formik
+      initialValues={initialClientValues}
+      validationSchema={clientSchema}
+      onSubmit={(values) => {
+        console.log(values);
+      }}
+    >
+      {({ values, touched, errors, handleChange, handleBlur, isValid }) => (
+        <Form noValidate autoComplete="off">
+          <div className="container mt-4">
+            <h3 className="text-muted text-center">ADD Client</h3>
 
-          <div className="float-right">
-            <LinkContainer to="/clients/list">
-              <Button color="secondary" className="mr-2">
-                Cancel
-              </Button>
-            </LinkContainer>
+            {/* {error && <Message type={"error"} text={error.message} />} */}
 
-            <Button variant="contained" type={"submit"} color="success">
-              ADD Client
-            </Button>
+            <div className="card rounded shadow-sm p-3 mt-4">
+              <div className="row">
+                <div className="col-md-6">
+                  {/* NAME */}
+                  <clientForms.NameFormControl
+                    values={values}
+                    touched={touched}
+                    errors={errors}
+                    handleChange={handleChange}
+                  />
+                </div>
+                <div className="col-md-6">
+                  {/* LAST NAME */}
+                  <clientForms.LastNameFormControl
+                    values={values}
+                    touched={touched}
+                    errors={errors}
+                    handleChange={handleChange}
+                  />
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-md-6">
+                  {/* COMPANY */}
+                  <clientForms.CompanyFormControl
+                    values={values}
+                    touched={touched}
+                    errors={errors}
+                    handleChange={handleChange}
+                  />
+                </div>
+                <div className="col-md-6">
+                  {/* AGE */}
+                  <clientForms.AgeFormControl
+                    values={values}
+                    touched={touched}
+                    errors={errors}
+                    handleChange={handleChange}
+                  />
+                </div>
+              </div>
+
+              <div className="row">
+                <div className="col-md-12">
+                  {/* EMAILS */}
+                  <clientForms.EmailsFormControl
+                    values={values}
+                    touched={touched}
+                    errors={errors}
+                    handleChange={handleChange}
+                    handleBlur={handleBlur}
+                  />
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-md-12">
+                  {/* TYPE OF CLIENT */}
+                  <clientForms.TypeClientFormControl
+                    values={values}
+                    touched={touched}
+                    errors={errors}
+                    handleChange={handleChange}
+                  />
+                </div>
+              </div>
+
+              <div className="text-right">
+                {/* {loading && <Loader />} */}
+                <LinkContainer to="/clients/list">
+                  <Button color="secondary" className="mr-2">
+                    Cancel
+                  </Button>
+                </LinkContainer>
+
+                <Button
+                  variant="contained"
+                  type={"submit"}
+                  disabled={!isValid || values.emails.length === 0}
+                  color="success"
+                >
+                  ADD Client
+                </Button>
+              </div>
+            </div>
           </div>
-        </form>
-      </div>
-    </div>
+        </Form>
+      )}
+    </Formik>
   );
-}
+};
 
-export default ADD;
+export default Add;
