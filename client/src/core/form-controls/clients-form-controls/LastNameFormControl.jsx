@@ -6,21 +6,21 @@ function LastNameFormControl({ values, handleChange, errors, touched }) {
       <label>Last Name</label>
       <input
         type="text"
-        id="lastName"
-        name="lastName"
+        id="lastname"
+        name="lastname"
         onChange={handleChange}
         className={
-          touched.lastName && Boolean(errors.lastName)
+          touched.lastname && Boolean(errors.lastname)
             ? "form-control is-invalid"
-            : touched.lastName && !Boolean(errors.lastName)
+            : touched.lastname && !Boolean(errors.lastname)
             ? "form-control is-valid"
             : "form-control"
         }
-        value={values.lastName}
+        value={values.lastname}
         placeholder={"Write here lastName"}
       />
-      {touched.lastName && Boolean(errors.lastName) && (
-        <small className="error-text">{errors.lastName}</small>
+      {touched.lastname && Boolean(errors.lastname) && (
+        <small className="error-text">{errors.lastname}</small>
       )}
     </div>
   );
