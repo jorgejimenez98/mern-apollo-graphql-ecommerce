@@ -4,6 +4,7 @@ import CompanyFormControl from "./clients-form-controls/CompanyFormControl";
 import TypeClientFormControl from "./clients-form-controls/TypeClientFormControl";
 import AgeFormControl from "./clients-form-controls/AgeFormControl";
 import LastNameFormControl from "./clients-form-controls/LastNameFormControl";
+import EmailsFormControl from "./clients-form-controls/EmailsFormControl";
 
 const clientForms = {
   NameFormControl,
@@ -12,6 +13,7 @@ const clientForms = {
   TypeClientFormControl,
   AgeFormControl,
   LastNameFormControl,
+  EmailsFormControl,
 };
 
 export { clientForms };
