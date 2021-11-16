@@ -9,14 +9,14 @@ const clientResolvers = {
   // Queries
   Query: {
     // Get Clients List
-    getClientsList: (root, { limit }) => {
+    getClientsList: (root, { limit, offset }) => {
       return new Promise((resolve, object) => {
         Client.find({}, (error, data) => {
           // Check Error
           if (error) rejects(error);
           // Return new Client
           else resolve(data);
-        }).limit(limit);
+        }).limit(limit).skip(offset);
       });
     },
 
