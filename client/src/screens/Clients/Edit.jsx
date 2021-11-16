@@ -2,10 +2,11 @@ import React, { useEffect } from "react";
 import { LinkContainer } from "react-router-bootstrap";
 import { Button } from "@mui/material";
 import { Form, Formik } from "formik";
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 import { clientForms } from "../../core/form-controls";
 import { Loader, Message } from "../../components";
 import { CLIENT_DETAILS } from "../../graphql/queries";
+import { UPDATE_CLIENT } from "../../graphql/mutations";
 import { clientSchema } from "../../core/formik";
 
 const initialClientValues = {
@@ -30,7 +31,11 @@ const Edit = ({ history, match }) => {
     variables: { getClientId: clientId },
   });
 
-  console.log("OKOKOK", data);
+  // Init Update Client Mutation
+  const [
+    updateClient,
+    { data: dataUpdate, error: errorUpdate, loading: loadingUpdate },
+  ] = useMutation(UPDATE_CLIENT);
 
   // Init Client Values
   initialClientValues.name = data?.getClient.name;
@@ -40,7 +45,11 @@ const Edit = ({ history, match }) => {
   initialClientValues.age = data?.getClient.age;
   initialClientValues.type = data?.getClient.type;
 
-  useEffect(() => {}, [history]);
+  useEffect(() => {
+    if (dataUpdate) {
+      history.push("/");
+    }
+  }, [dataUpdate, history]);
 
   return (
     <React.Fragment>
@@ -53,8 +62,25 @@ const Edit = ({ history, match }) => {
           <Formik
             initialValues={initialClientValues}
             validationSchema={clientSchema}
-            onSubmit={(input) => {
-              console.log("Edit", input);
+            onSubmit={(values) => {
+              const input = {
+                id: clientId,
+                name: values.name,
+                lastname: values.lastname,
+                age: values.age,
+                company: values.company,
+                type: values.type,
+                emails: values.emails,
+              };
+              updateClient({
+                variables: { input },
+                refetchQueries: [
+                  {
+                    query: CLIENT_DETAILS,
+                    variables: { getClientId: clientId },
+                  },
+                ],
+              });
             }}
           >
             {({
@@ -71,7 +97,9 @@ const Edit = ({ history, match }) => {
                     Edit Client <strong>{data?.getClient.name}</strong>
                   </h3>
 
-                  {/* {error && <Message type={"error"} text={error.message} />} */}
+                  {errorUpdate && (
+                    <Message type={"error"} text={errorUpdate.message} />
+                  )}
 
                   <div className="card rounded shadow-sm p-3 mt-4">
                     <div className="row">
@@ -140,7 +168,7 @@ const Edit = ({ history, match }) => {
                     </div>
 
                     <div className="text-right">
-                      {/* {loading && <Loader />} */}
+                      {loadingUpdate && <Loader />}
                       <LinkContainer to="/clients/list">
                         <Button color="secondary" className="mr-2">
                           Cancel
@@ -153,7 +181,7 @@ const Edit = ({ history, match }) => {
                         disabled={!isValid || values?.emails?.length === 0}
                         color="success"
                       >
-                        ADD Client
+                        EDIT Client
                       </Button>
                     </div>
                   </div>
