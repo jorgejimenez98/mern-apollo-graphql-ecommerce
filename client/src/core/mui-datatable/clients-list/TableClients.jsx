@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { ConfirmDialog } from "../../../components";
 import { LinkContainer } from "react-router-bootstrap";
 import { Edit, Delete, ShoppingCart } from "@mui/icons-material";
+import Paginator from "../custom.paginator";
 import {
   IconButton,
   Tooltip,
@@ -17,6 +18,10 @@ function TableClients({ data, confirmDelete }) {
   const [open, setOpen] = useState(false);
   const [nameToDelete, setNameToDelete] = useState("");
   const [clientId, setClientId] = useState(-1);
+
+  // Pagination
+  const [actualPage, setActualPage] = useState(1);
+  const [offset, setOffset] = useState(0);
 
   const openDialog = (id, name) => {
     setOpen(true);
@@ -98,6 +103,9 @@ function TableClients({ data, confirmDelete }) {
           </React.Fragment>
         ))}
       </List>
+
+      {/* Paginator */}
+      <Paginator actual={actualPage} offset={offset} />
 
       <ConfirmDialog
         type={"Client"}
