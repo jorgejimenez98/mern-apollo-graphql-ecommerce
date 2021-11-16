@@ -22,6 +22,7 @@ function TableClients({ data, confirmDelete }) {
   // Pagination
   const [actualPage, setActualPage] = useState(1);
   const [offset, setOffset] = useState(0);
+  const limit = 10;
 
   const openDialog = (id, name) => {
     setOpen(true);
@@ -38,6 +39,13 @@ function TableClients({ data, confirmDelete }) {
   const confirmAgree = () => {
     confirmDelete(clientId);
     handleClose();
+  };
+
+  const lastPage = () => {};
+
+  const nextPage = () => {
+    setOffset(offset + limit);
+    setActualPage(actualPage + 1);
   };
 
   return (
@@ -105,7 +113,14 @@ function TableClients({ data, confirmDelete }) {
       </List>
 
       {/* Paginator */}
-      <Paginator actual={actualPage} offset={offset} />
+      <Paginator
+        actual={actualPage}
+        offset={offset}
+        totalItems={data.getClientsCount}
+        limit={limit}
+        lastPage={lastPage}
+        nextPage={nextPage}
+      />
 
       <ConfirmDialog
         type={"Client"}
