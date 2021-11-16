@@ -16,7 +16,9 @@ const clientResolvers = {
           if (error) rejects(error);
           // Return new Client
           else resolve(data);
-        }).limit(limit).skip(offset);
+        })
+          .limit(limit)
+          .skip(offset);
       });
     },
 
@@ -34,7 +36,19 @@ const clientResolvers = {
       });
     },
 
-    // Nex Query Here
+    // Get Client By ID
+    getClientsCount: (root) => {
+      // Return promise consult
+      return new Promise((resolve, object) => {
+        // Get Client from Mongo DB
+        Client.countDocuments({}, (error, count) => {
+          // Check Error
+          if (error) rejects(error);
+          // Return new Client
+          else resolve(count);
+        });
+      });
+    },
   },
 
   // Mutations
