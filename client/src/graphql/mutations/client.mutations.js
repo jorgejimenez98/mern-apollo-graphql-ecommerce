@@ -16,3 +16,14 @@ export const DELETE_CLIENT = gql`
     deleteClient(id: $deleteClientId)
   }
 `;
+
+export const UPDATE_CLIENT = gql`
+  mutation Mutation($input: ClientInput) {
+    updateClient(input: $input) {
+      id
+      lastname
+      name
+      company
+    }
+  }
+`;
