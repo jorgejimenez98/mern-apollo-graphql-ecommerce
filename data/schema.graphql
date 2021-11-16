@@ -29,7 +29,7 @@ enum ClientType {
 
 # ----------- QUERIES
 type Query {
-  getClientsList(limit: Int): [Client]
+  getClientsList(limit: Int, offset: Int): [Client]
   getClient(id: ID!): Client
 }
 
