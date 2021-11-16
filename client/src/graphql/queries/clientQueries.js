@@ -8,6 +8,7 @@ export const CLIENTS_QUERY = gql`
       lastname
       company
     }
+    getClientsCount
   }
 `;
 
