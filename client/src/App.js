@@ -4,12 +4,13 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Page403, TheLayout } from "./components";
 import { Login } from "./screens";
 // Apollo Deps
-import { ApolloProvider } from "@apollo/client";
+import { ApolloProvider, InMemoryCache } from "@apollo/client";
 import ApolloClient from "apollo-boost";
 
 // Apollo Client Extension: Apollo-Devs-Tools
 const client = new ApolloClient({
   uri: "http://localhost:5000/graphql",
+  cache: new InMemoryCache({ addTypename: false }),
   onError: ({ netWorkError, graphqlError }) => {
     console.log("Network Error", netWorkError);
     console.log("GraphQL Error", graphqlError);
