@@ -1,8 +1,8 @@
 import gql from "graphql-tag";
 
 export const CLIENTS_QUERY = gql`
-  {
-    getClientsList {
+  query GetClientsList($limit: Int, $offset: Int) {
+    getClientsList(limit: $limit, offset: $offset) {
       id
       name
       lastname
