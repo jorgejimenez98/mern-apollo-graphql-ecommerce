@@ -1,30 +1,30 @@
 import React from "react";
+import IconButton from "@mui/material/IconButton";
+import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 
-function Paginator({ actual, offset, totalItems, limit, nextPage, lastPage }) {
-  const btnBefore =
-    actual > 1 ? (
-      <button onClick={lastPage} className="btn btn-success mr-2">
-        &laquo; Before
-      </button>
-    ) : (
-      ""
-    );
-
-  const pages = Math.ceil(totalItems) / limit;
-
-  const btnNext =
-    actual !== pages ? (
-      <button onClick={nextPage} className="btn btn-success">
-        &raquo; Next
-      </button>
-    ) : (
-      ""
-    );
+function Paginator({ actual, totalItems, limit, nextPage, lastPage }) {
+  const pages = Math.ceil(totalItems / limit);
 
   return (
-    <div className="mt-5 d-flex justify-content-center">
-      {btnBefore}
-      {btnNext}
+    <div className="mt-3">
+      <div className="row">
+        <div className="col-md-6 col-sm-12 text-left">
+          <p>Page {actual}</p>
+        </div>
+        <div className="col-md-6 col-sm-12 text-right">
+          {actual > 1 && (
+            <IconButton onClick={lastPage}>
+              <NavigateBeforeIcon />
+            </IconButton>
+          )}
+          {actual !== pages && (
+            <IconButton onClick={nextPage}>
+              <NavigateNextIcon />
+            </IconButton>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
