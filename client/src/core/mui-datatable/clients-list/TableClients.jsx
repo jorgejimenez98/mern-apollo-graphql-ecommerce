@@ -14,15 +14,19 @@ import {
   ListItemSecondaryAction,
 } from "@mui/material";
 
-function TableClients({ data, confirmDelete }) {
+function TableClients({
+  data,
+  confirmDelete,
+  actualPage,
+  offset,
+  limit,
+  setActualPage,
+  setOffset,
+  total,
+}) {
   const [open, setOpen] = useState(false);
   const [nameToDelete, setNameToDelete] = useState("");
   const [clientId, setClientId] = useState(-1);
-
-  // Pagination
-  const [actualPage, setActualPage] = useState(1);
-  const [offset, setOffset] = useState(0);
-  const limit = 10;
 
   const openDialog = (id, name) => {
     setOpen(true);
@@ -41,7 +45,10 @@ function TableClients({ data, confirmDelete }) {
     handleClose();
   };
 
-  const lastPage = () => {};
+  const lastPage = () => {
+    setOffset(offset - limit);
+    setActualPage(actualPage - 1);
+  };
 
   const nextPage = () => {
     setOffset(offset + limit);
@@ -116,7 +123,7 @@ function TableClients({ data, confirmDelete }) {
       <Paginator
         actual={actualPage}
         offset={offset}
-        totalItems={data.getClientsCount}
+        totalItems={total}
         limit={limit}
         lastPage={lastPage}
         nextPage={nextPage}
