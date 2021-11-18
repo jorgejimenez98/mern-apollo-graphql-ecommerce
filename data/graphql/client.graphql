@@ -1,0 +1,49 @@
+# ----------------------------- Types
+
+"""
+Type Client
+"""
+type Client {
+  id: ID
+  name: String
+  lastname: String
+  company: String
+  emails: [Email]
+  age: Int
+  type: ClientType
+  orders: [Order]
+}
+
+type Email {
+  email: String
+}
+
+# -------------------------------- ENUM TYPES
+
+enum ClientType {
+  BASIC
+  PREMIUN
+}
+
+# --------------------------------- Inputs
+
+"""
+Input to Create a new Client
+"""
+input ClientInput {
+  id: ID
+  name: String!
+  lastname: String!
+  company: String!
+  emails: [EmailInput]
+  age: Int!
+  type: ClientType!
+  orders: [ProductInput]
+}
+
+"""
+Input to create a new Email
+"""
+input EmailInput {
+  email: String!
+}
