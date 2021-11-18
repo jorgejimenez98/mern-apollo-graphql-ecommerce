@@ -10,6 +10,9 @@ type Query {
   getClient(id: ID!): Client
   """ Query to get Clients Count """
   getClientsCount: Int
+
+  # PRODUCTS
+  getProductList(limit: Int, offset: Int): [Product]
 }
 
 # ------------------------------- Mutations
