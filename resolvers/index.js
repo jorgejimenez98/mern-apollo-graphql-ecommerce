@@ -1,7 +1,15 @@
-const GMR = require("graphql-merge-resolvers");
+import { clientMutations, clientQueries } from "./client";
+import { productMutations, productQueries } from "./product";
 
-// Resolvers
-const clientResolvers = require("./client.resolvers");
-const productResolvers = require("./product.resolvers");
+const resolvers = {
+  Query: {
+    ...clientQueries,
+    ...productQueries,
+  },
+  Mutation: {
+    ...clientMutations,
+    ...productMutations,
+  },
+};
 
-module.exports = GMR.merge([clientResolvers, productResolvers]);
+export default resolvers;
