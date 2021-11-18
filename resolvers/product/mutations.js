@@ -20,6 +20,23 @@ const productMutations = {
       });
     });
   },
+
+  // Update Product Mutation
+  updateProduct: (root, { input }) => {
+    return new Promise((resolve, object) => {
+      Product.findByIdAndUpdate(
+        { _id: input.id }, // Filter
+        input, // New Values
+        { new: true }, // Return new Updated values
+        (error, newProduct) => {
+          // Check Error
+          if (error) rejects(error);
+          // Return new Client
+          else resolve(newProduct);
+        }
+      );
+    });
+  },
 };
 
 export default productMutations;
