@@ -38,7 +38,7 @@ input ClientInput {
   emails: [EmailInput]
   age: Int!
   type: ClientType!
-  orders: [ProductInput]
+  orders: [OrderInput]
 }
 
 """
