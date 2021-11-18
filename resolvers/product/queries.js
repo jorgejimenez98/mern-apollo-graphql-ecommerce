@@ -28,6 +28,20 @@ const productQueries = {
       });
     });
   },
+
+  // Get Client By ID
+  getProductsCount: (root) => {
+    // Return promise consult
+    return new Promise((resolve, object) => {
+      // Get Product from Mongo DB
+      Product.countDocuments({}, (error, count) => {
+        // Check Error
+        if (error) rejects(error);
+        // Return Count
+        else resolve(count);
+      });
+    });
+  },
 };
 
 export default productQueries;
