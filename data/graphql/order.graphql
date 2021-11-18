@@ -1,0 +1,11 @@
+# Types
+
+"""
+ Object Order
+"""
+type Order {
+  product: String
+  price: Int
+}
+
+# Inputs
