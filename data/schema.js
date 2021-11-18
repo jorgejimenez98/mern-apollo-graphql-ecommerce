@@ -1,5 +1,19 @@
-const { importSchema } = require("graphql-import");
+import { join } from "path";
+import { readdirSync, readFileSync } from "fs";
+import { makeExecutableSchema } from "@graphql-tools/schema";
 
-const typeDefs = importSchema("data/schema.graphql");
+const gqlFiles = readdirSync(join(__dirname, "./graphql"));
 
-module.exports = typeDefs;
+let typeDefs = "";
+
+gqlFiles.forEach((file) => {
+  typeDefs += readFileSync(join(__dirname, "./graphql", file), {
+    encoding: "utf8",
+  });
+});
+
+const schema = makeExecutableSchema({
+  typeDefs,
+});
+
+export default schema;
