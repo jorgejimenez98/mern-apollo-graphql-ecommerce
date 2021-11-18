@@ -33,4 +33,6 @@ type Mutation {
   createProduct(input: ProductInput!): Product
   """ Allow to update a Product """
   updateProduct(input: ProductInput): Product
+  """ Allow to Delete a Product """
+  deleteProduct(id: ID): String
 }
