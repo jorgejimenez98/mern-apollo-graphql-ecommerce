@@ -1,7 +1,7 @@
 # Types
 
 """
- Object Order
+Object Order
 """
 type Order {
   product: String
@@ -9,3 +9,10 @@ type Order {
 }
 
 # Inputs
+"""
+Input Order
+"""
+input OrderInput {
+  product: Product!
+  price: Int!
+}
