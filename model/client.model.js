@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
+import { Schema, model } from "mongoose";
 
-const clientSchema = mongoose.Schema({
+const clientSchema = Schema({
   name: { type: String, required: true },
   lastname: { type: String, required: true },
   company: { type: String, required: true },
@@ -18,6 +18,6 @@ clientSchema.set("ToJSON", {
   virtuals: true,
 });
 
-const Client = mongoose.model("clients", clientSchema);
+const Client = model("clients", clientSchema);
 
-module.exports = Client;
+export default Client;

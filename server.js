@@ -1,14 +1,14 @@
-const express = require("express");
+import express from "express";
 const app = express();
 let apolloServer = null;
 
 // Dependencies
-require("./data/db");
+import "./data/db";
 
 // Graphql imports
-const { ApolloServer } = require("apollo-server-express");
-const typeDefs = require("./data/schema");
-const resolvers = require("./resolvers");
+import { ApolloServer } from "apollo-server-express";
+import typeDefs from "./data/schema";
+import resolvers from "./resolvers";
 
 // Start Server
 async function startServer() {
