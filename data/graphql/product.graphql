@@ -1,0 +1,19 @@
+# --------------------------- Types
+type Product {
+  id: ID
+  name: String!
+  price: Int!
+  stock: Int!
+}
+
+# --------------------------- Inputs
+
+"""
+Input to Create a new Product
+"""
+input ProductInput {
+  id: ID
+  name: String!
+  price: Int!
+  stock: Int!
+}
