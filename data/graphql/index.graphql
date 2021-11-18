@@ -12,6 +12,7 @@ type Query {
   getClientsCount: Int
 
   # PRODUCTS
+  """ Query to get Product List """
   getProductList(limit: Int, offset: Int): [Product]
 }
 
@@ -28,6 +29,8 @@ type Mutation {
   deleteClient(id: ID): String
 
   # PRODUCTS 
-  """ Allow to create new clients """
+  """ Allow to create new Product """
   createProduct(input: ProductInput!): Product
+  """ Allow to update a Product """
+  updateProduct(input: ProductInput): Product
 }
