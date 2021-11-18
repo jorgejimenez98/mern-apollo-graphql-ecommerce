@@ -1,7 +1,6 @@
 # Custom Scalars
 scalar Date
-
-# ----------------------------- QUERIES
+ 
 type Query {
   # CLIENTS
   """ Query to get Clients List """
@@ -14,25 +13,26 @@ type Query {
   # PRODUCTS
   """ Query to get Product List """
   getProductList(limit: Int, offset: Int): [Product]
+    """ Query to get Product Details """
+  getProduct(id: ID!): Product
+  """ Query to get Clients Count """
+  getProductsCount: Int
 }
-
-# ------------------------------- Mutations
-
-
+ 
 type Mutation {
   # CLIENTS
-  """ Allow to create new clients """
+  """ QueryAllow to create new clients """
   createClient(input: ClientInput): Client
-  """ Allow to Update a client """
+  """ Query to Update a client """
   updateClient(input: ClientInput): Client
-  """ Allow to Delete a client """
+  """ Query to Delete a client """
   deleteClient(id: ID): String
 
   # PRODUCTS 
-  """ Allow to create new Product """
+  """ Query to create new Product """
   createProduct(input: ProductInput!): Product
-  """ Allow to update a Product """
+  """ Query to update a Product """
   updateProduct(input: ProductInput): Product
-  """ Allow to Delete a Product """
+  """ Query to Delete a Product """
   deleteProduct(id: ID): String
 }
