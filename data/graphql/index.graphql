@@ -17,9 +17,7 @@ type Query {
 
 # ------------------------------- Mutations
 
-"""
-Clients Mutations
-"""
+
 type Mutation {
   # CLIENTS
   """ Allow to create new clients """
