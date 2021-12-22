@@ -13,6 +13,6 @@ type Order {
 Input Order
 """
 input OrderInput {
-  product: Product!
+  product: ProductInput!
   price: Int!
 }
