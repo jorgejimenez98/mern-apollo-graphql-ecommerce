@@ -11,7 +11,11 @@ const CustomTextInputComponent = ({ ...props }) => {
         <Form.Label className="float-left text-capitalize">
           {props.label}
         </Form.Label>
-        <Form.Control {...field} {...props} />
+        <Form.Control
+          {...field}
+          {...props}
+          placeholder={`Write here the ${props.name}`}
+        />
 
         {Boolean(meta.touched && meta.error) ? (
           <small className="error-text">{meta.error}</small>
