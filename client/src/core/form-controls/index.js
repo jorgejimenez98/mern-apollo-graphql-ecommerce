@@ -6,6 +6,7 @@ import AgeFormControl from "./clients-form-controls/AgeFormControl";
 import LastNameFormControl from "./clients-form-controls/LastNameFormControl";
 import EmailsFormControl from "./clients-form-controls/EmailsFormControl";
 
+import CustomTextInputComponent from "./custom-form-controls/text-input.custom";
 const clientForms = {
   NameFormControl,
   CompanyFormControl,
@@ -16,4 +17,4 @@ const clientForms = {
   EmailsFormControl,
 };
 
-export { clientForms };
+export { clientForms, CustomTextInputComponent };
