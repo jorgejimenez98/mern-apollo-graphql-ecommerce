@@ -3,4 +3,14 @@ import {
   clientSchema,
 } from "./clients/clients.validations";
 
-export { initialClientValues, clientSchema };
+import {
+  initialProductValues,
+  productSchema,
+} from "./products/product.validations";
+
+export {
+  initialClientValues,
+  clientSchema,
+  initialProductValues,
+  productSchema,
+};
