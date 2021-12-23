@@ -4,4 +4,6 @@ import {
   UPDATE_CLIENT,
 } from "./client.mutations";
 
-export { CREATE_CLIENT, DELETE_CLIENT, UPDATE_CLIENT };
+import { CREATE_PRODUCT } from "./product.mutations";
+
+export { CREATE_CLIENT, DELETE_CLIENT, UPDATE_CLIENT, CREATE_PRODUCT };
