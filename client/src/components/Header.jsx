@@ -4,9 +4,9 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
+import HeaderMenu from "./HeaderMenu";
 
 export default function Header() {
   return (
@@ -35,12 +35,7 @@ export default function Header() {
             </Typography>
           </LinkContainer>
 
-          <LinkContainer to="/products/add">
-            <Button color="inherit">New Product</Button>
-          </LinkContainer>
-          <LinkContainer to="/client/add">
-            <Button color="inherit">New Client</Button>
-          </LinkContainer>
+          <HeaderMenu />
         </Toolbar>
       </AppBar>
     </Box>
