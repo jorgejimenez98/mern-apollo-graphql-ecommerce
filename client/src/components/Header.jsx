@@ -35,6 +35,9 @@ export default function Header() {
             </Typography>
           </LinkContainer>
 
+          <LinkContainer to="/products/add">
+            <Button color="inherit">New Product</Button>
+          </LinkContainer>
           <LinkContainer to="/client/add">
             <Button color="inherit">New Client</Button>
           </LinkContainer>
