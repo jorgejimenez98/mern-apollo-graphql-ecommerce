@@ -6,6 +6,7 @@ import {
   ClientOrders,
   AddProduct,
   ListProduct,
+  EditProduct
 } from "./screens";
 
 const routes = [
@@ -20,6 +21,7 @@ const routes = [
   /* Products Routes */
   { path: "/products/add", component: AddProduct },
   { path: "/products/list", component: ListProduct },
+  { path: "/products/edit/:productId", component: EditProduct },
 ];
 
 export default routes;
