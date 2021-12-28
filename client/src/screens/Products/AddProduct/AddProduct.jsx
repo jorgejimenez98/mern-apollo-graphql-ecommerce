@@ -13,7 +13,7 @@ const AddProduct = ({ history }) => {
 
   useEffect(() => {
     if (data) {
-      history.push("/");
+      history.push("/products/list");
     }
   }, [data, history]);
 
