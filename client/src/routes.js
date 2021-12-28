@@ -5,6 +5,7 @@ import {
   ADD as AddClient,
   ClientOrders,
   AddProduct,
+  ListProduct,
 } from "./screens";
 
 const routes = [
@@ -18,6 +19,7 @@ const routes = [
 
   /* Products Routes */
   { path: "/products/add", component: AddProduct },
+  { path: "/products/list", component: ListProduct },
 ];
 
 export default routes;
