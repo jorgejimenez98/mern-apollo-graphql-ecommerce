@@ -55,7 +55,7 @@ const AddProduct = ({ history }) => {
 
                 <div className="text-right">
                   {loading && <Loader />}
-                  <LinkContainer to="/">
+                  <LinkContainer to="/products/list">
                     <Button color="secondary" className="mr-2">
                       Cancel
                     </Button>
