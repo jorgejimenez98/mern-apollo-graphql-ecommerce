@@ -11,3 +11,14 @@ export const PRODUCT_LIST_QUERY = gql`
     getProductsCount
   }
 `;
+
+export const GET_PRODUCT_DETAILS = gql`
+  query GetProduct($productId: ID!) {
+    getProduct(id: $productId) {
+      id
+      name
+      price
+      stock
+    }
+  }
+`;
