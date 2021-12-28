@@ -60,7 +60,7 @@ function TableProducts(props) {
                   />
                   <mui.ListItemSecondaryAction>
                     {/* EDIT */}
-                    <LinkContainer to={`#`}>
+                    <LinkContainer to={`/products/edit/${row.id}`}>
                       <mui.Tooltip
                         title={`Edit Product ${row.name}`}
                         placement="bottom"
