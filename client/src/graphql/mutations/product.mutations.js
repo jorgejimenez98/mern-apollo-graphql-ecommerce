@@ -10,3 +10,9 @@ export const CREATE_PRODUCT = gql`
     }
   }
 `;
+
+export const DELETE_PRODUCT = gql`
+  mutation Mutation($productId: ID) {
+    deleteProduct(id: $productId)
+  }
+`;
