@@ -4,6 +4,6 @@ import Edit from "./Clients/Edit";
 import ADD from "./Clients/Add";
 import ClientOrders from "./Orders/ClientOrders/ClientOrders";
 /* Products */
-import { AddProduct } from "./Products";
+import { AddProduct, ListProduct } from "./Products";
 
-export { ClientsList, Login, Edit, ClientOrders, ADD, AddProduct };
+export { ClientsList, Login, Edit, ClientOrders, ADD, AddProduct, ListProduct };
