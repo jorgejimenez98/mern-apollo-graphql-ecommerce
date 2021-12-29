@@ -48,6 +48,9 @@ export default function HeaderMenu() {
         <LinkContainer to="/products/list">
           <MenuItem onClick={handleClose}>Products List</MenuItem>
         </LinkContainer>
+        <LinkContainer to="/clients/list">
+          <MenuItem onClick={handleClose}>Clients List</MenuItem>
+        </LinkContainer>
       </Menu>
     </div>
   );
