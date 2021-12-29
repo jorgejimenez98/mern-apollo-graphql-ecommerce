@@ -1,4 +1,5 @@
 import Product from "../../model/product.model";
+import { rejects } from "assert";
 
 const productMutations = {
   // Create Product Resolver
@@ -38,19 +39,18 @@ const productMutations = {
     });
   },
 
-    // Delete Product Mutation
-    deleteProduct: (root, { id }) => {
-      return new Promise((resolve, object) => {
-        // Delete Client from Mongoose by ID
-        Product.findByIdAndRemove(id, (error) => {
-          // Check error
-          if (error) rejects(error);
-          // Return Response
-          else resolve("Product Deleted Successfully");
-        });
+  // Delete Product Mutation
+  deleteProduct: (root, { id }) => {
+    return new Promise((resolve, object) => {
+      // Delete Client from Mongoose by ID
+      Product.findByIdAndRemove(id, (error) => {
+        // Check error
+        if (error) rejects(error);
+        // Return Response
+        else resolve("Product Deleted Successfully");
       });
-    },
-  
+    });
+  },
 };
 
 export default productMutations;
