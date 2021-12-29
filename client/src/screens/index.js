@@ -1,4 +1,5 @@
 import ClientsList from "./Clients/List";
+import HomeScreen from "./HomeScreen/HomeScreen";
 import Login from "./Login/Login";
 import Edit from "./Clients/Edit";
 import ADD from "./Clients/Add";
@@ -15,4 +16,5 @@ export {
   AddProduct,
   ListProduct,
   EditProduct,
+  HomeScreen,
 };
