@@ -21,7 +21,7 @@ function TheLayout() {
             )
           );
         })}
-        <Redirect from="/" to="/clients/list" />
+        <Redirect from="/" to="/home" />
       </Switch>
     </React.Fragment>
   );
