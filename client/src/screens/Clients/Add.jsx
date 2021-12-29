@@ -13,7 +13,7 @@ const Add = ({ history }) => {
 
   useEffect(() => {
     if (data) {
-      history.push("/");
+      history.push("/clients/list");
     }
   }, [data, history]);
 

@@ -47,7 +47,7 @@ const Edit = ({ history, match }) => {
 
   useEffect(() => {
     if (dataUpdate) {
-      history.push("/");
+      history.push("/clients/list");
     }
   }, [dataUpdate, history]);
 
