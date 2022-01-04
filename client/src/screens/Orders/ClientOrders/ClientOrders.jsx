@@ -2,6 +2,7 @@ import React from "react";
 import { useQuery } from "@apollo/client";
 import { CLIENT_DETAILS } from "../../../graphql/queries";
 import { Loader, Message } from "../../../components";
+import ClientDetails from "../ClientDetails/ClientDetails";
 
 function ClientOrders({ match }) {
   const clientId = match.params.clientId;
@@ -25,7 +26,9 @@ function ClientOrders({ match }) {
             </div>
 
             <div className="row">
-              <div className="col-md-4">Client goes Here</div>
+              <div className="col-md-4">
+                <ClientDetails client={data.getClient} />
+              </div>
               <div className="col-md-8">Orders goes Here</div>
             </div>
           </div>
