@@ -1,12 +1,37 @@
 import React from "react";
+import { useQuery } from "@apollo/client";
+import { CLIENT_DETAILS } from "../../../graphql/queries";
+import { Loader, Message } from "../../../components";
 
 function ClientOrders({ match }) {
   const clientId = match.params.clientId;
 
+  const { loading, error, data } = useQuery(CLIENT_DETAILS, {
+    pollInterval: 500,
+    variables: { getClientId: clientId },
+  });
+
   return (
-    <div>
-      <h3>Client Orders {clientId}</h3>
-    </div>
+    <React.Fragment>
+      {loading ? (
+        <Loader />
+      ) : error ? (
+        <Message text={error.message} type={"error"} />
+      ) : (
+        data?.getClient && (
+          <div className="container mt-3">
+            <div className="text-center">
+              <h3>New Order</h3>
+            </div>
+
+            <div className="row">
+              <div className="col-md-4">Client goes Here</div>
+              <div className="col-md-8">Orders goes Here</div>
+            </div>
+          </div>
+        )
+      )}
+    </React.Fragment>
   );
 }
 
