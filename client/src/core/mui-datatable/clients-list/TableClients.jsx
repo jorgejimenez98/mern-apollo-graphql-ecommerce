@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ConfirmDialog, CustomAddLinkButton } from "../../../components";
 import { LinkContainer } from "react-router-bootstrap";
-import { Edit, Delete, ShoppingCart } from "@mui/icons-material";
+import { Edit, Delete, AddShoppingCartRounded } from "@mui/icons-material";
 import Paginator from "../custom.paginator";
 import * as mui from "@mui/material";
 
@@ -62,13 +62,13 @@ function TableClients(props) {
                     {/* EDIT */}
                     <LinkContainer to={`/client/orders/${row.id}`}>
                       <mui.Tooltip
-                        title={`Look Orders of ${row.name} ${row.lastname}`}
+                        title={`Add Order to ${row.name} ${row.lastname}`}
                         placement="bottom"
                         aria-label="orders"
                         TransitionComponent={mui.Zoom}
                       >
                         <mui.IconButton>
-                          <ShoppingCart />
+                          <AddShoppingCartRounded />
                         </mui.IconButton>
                       </mui.Tooltip>
                     </LinkContainer>
