@@ -1,8 +1,9 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
-import { CLIENT_DETAILS } from "../../../graphql/queries";
+import { CLIENT_DETAILS, PRODUCT_LIST_QUERY } from "../../../graphql/queries";
 import { Loader, Message } from "../../../components";
 import ClientDetails from "../ClientDetails/ClientDetails";
+import ProductSelect from "./ProductSelect/ProductSelect";
 
 function ClientOrders({ match }) {
   const clientId = match.params.clientId;
@@ -10,6 +11,10 @@ function ClientOrders({ match }) {
   const { loading, error, data } = useQuery(CLIENT_DETAILS, {
     pollInterval: 500,
     variables: { getClientId: clientId },
+  });
+
+  const { data: productList } = useQuery(PRODUCT_LIST_QUERY, {
+    pollInterval: 500,
   });
 
   return (
@@ -29,7 +34,11 @@ function ClientOrders({ match }) {
               <div className="col-md-4">
                 <ClientDetails client={data.getClient} />
               </div>
-              <div className="col-md-8">Orders goes Here</div>
+              <div className="col-md-8">
+                {productList?.getProductList && (
+                  <ProductSelect list={productList.getProductList} />
+                )}
+              </div>
             </div>
           </div>
         )
