@@ -30,7 +30,7 @@ function ClientOrders({ match }) {
               <h3>New Order</h3>
             </div>
 
-            <div className="row">
+            <div className="row mt-3">
               <div className="col-md-4">
                 <ClientDetails client={data.getClient} />
               </div>
