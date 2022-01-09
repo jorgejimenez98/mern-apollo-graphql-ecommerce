@@ -39,6 +39,8 @@ function TableProductSelected({ list, handleDelete, handleUpdateQuantity }) {
                         <Form.Control
                           type="number"
                           className="mt-2"
+                          min="0"
+                          step="1"
                           onChange={(e) =>
                             handleUpdateQuantity(e.target.value, index)
                           }
