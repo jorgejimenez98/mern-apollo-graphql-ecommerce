@@ -41,6 +41,7 @@ function TableProductSelected({ list, handleDelete, handleUpdateQuantity }) {
                           className="mt-2"
                           min="0"
                           step="1"
+                          max={row.stock}
                           onChange={(e) =>
                             handleUpdateQuantity(e.target.value, index)
                           }
