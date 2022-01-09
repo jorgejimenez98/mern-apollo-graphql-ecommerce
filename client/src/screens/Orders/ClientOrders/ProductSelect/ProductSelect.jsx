@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Select from "react-select";
+import TableProductSelected from "../TableProductSelected/TableProductSelected";
 
 function ProductSelect({ list }) {
   const [selectedProducts, setSelectedProducts] = useState([]);
@@ -18,8 +19,10 @@ function ProductSelect({ list }) {
         onChange={handleChange}
         getOptionValue={(item) => item.id}
         getOptionLabel={(item) => item.name}
-        placeholder={"Select Product"}
+        placeholder={"Select Product..."}
       />
+
+      <TableProductSelected list={selectedProducts} />
     </React.Fragment>
   );
 }
