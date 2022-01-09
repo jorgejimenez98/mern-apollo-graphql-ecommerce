@@ -1,8 +1,9 @@
 import React from "react";
 import * as mui from "@mui/material";
+import { Form } from "react-bootstrap";
 import { Delete } from "@mui/icons-material";
 
-function TableProductSelected({ list, handleDelete }) {
+function TableProductSelected({ list, handleDelete, handleUpdateQuantity }) {
   return (
     <React.Fragment>
       {list.length !== 0 && (
@@ -15,22 +16,36 @@ function TableProductSelected({ list, handleDelete }) {
                   <mui.TableCell>Product</mui.TableCell>
                   <mui.TableCell align="right">Price</mui.TableCell>
                   <mui.TableCell align="right">Stock</mui.TableCell>
-                  <mui.TableCell align="right">Quantity</mui.TableCell>
+                  <mui.TableCell>Quantity</mui.TableCell>
                   <mui.TableCell align="right"></mui.TableCell>
                 </mui.TableRow>
               </mui.TableHead>
               <mui.TableBody>
-                {list.map((row) => (
+                {list.map((row, index) => (
                   <mui.TableRow
                     key={row.id}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
+                    {/* Texts */}
                     <mui.TableCell component="th" scope="row">
                       {row.name}
                     </mui.TableCell>
                     <mui.TableCell align="right">{row.price}</mui.TableCell>
                     <mui.TableCell align="right">{row.stock}</mui.TableCell>
-                    <mui.TableCell align="right">Quantity</mui.TableCell>
+
+                    {/* Quantity */}
+                    <mui.TableCell>
+                      <Form.Group>
+                        <Form.Control
+                          type="number"
+                          className="mt-2"
+                          onChange={(e) =>
+                            handleUpdateQuantity(e.target.value, index)
+                          }
+                          placeholder={`Quantity...`}
+                        />
+                      </Form.Group>
+                    </mui.TableCell>
 
                     {/* Delete Button */}
                     <mui.TableCell align="right">
