@@ -4,18 +4,36 @@ import TableProductSelected from "../TableProductSelected/TableProductSelected";
 
 function ProductSelect({ list }) {
   const [selectedProducts, setSelectedProducts] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   const handleChange = (newProducts) => {
-    setSelectedProducts(newProducts);
+    const newProductsAux = newProducts.map((item) => {
+      return { ...item, quantity: item?.quantity ? item.quantity : 0 };
+    });
+    setSelectedProducts(newProductsAux);
   };
 
   const handleDelete = (item) => {
     const listAux = selectedProducts.filter((x) => x.id !== item.id);
     setSelectedProducts(listAux);
+    updateTotalPrice();
   };
 
   const handleUpdateQuantity = (newValue, index) => {
-    console.log("Change", newValue, index);
+    let listAux = selectedProducts;
+    listAux[index].quantity = newValue;
+    setSelectedProducts(listAux);
+    updateTotalPrice();
+  };
+
+  const updateTotalPrice = () => {
+    let newTotalPrice = 0;
+    if (selectedProducts.length !== 0) {
+      selectedProducts.forEach((item) => {
+        newTotalPrice += item.price * item.quantity;
+      });
+    }
+    setTotalPrice(newTotalPrice);
   };
 
   return (
@@ -37,6 +55,8 @@ function ProductSelect({ list }) {
         handleDelete={handleDelete}
         handleUpdateQuantity={handleUpdateQuantity}
       />
+
+      <p className="font-weight-bold float-right mt-3">Total: $ {totalPrice}</p>
     </React.Fragment>
   );
 }
