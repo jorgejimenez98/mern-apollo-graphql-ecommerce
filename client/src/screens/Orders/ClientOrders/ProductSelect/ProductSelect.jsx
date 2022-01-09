@@ -14,6 +14,10 @@ function ProductSelect({ list }) {
     setSelectedProducts(listAux);
   };
 
+  const handleUpdateQuantity = (newValue, index) => {
+    console.log("Change", newValue, index);
+  };
+
   return (
     <React.Fragment>
       <h3 className="text-center">Select Products</h3>
@@ -31,6 +35,7 @@ function ProductSelect({ list }) {
       <TableProductSelected
         list={selectedProducts}
         handleDelete={handleDelete}
+        handleUpdateQuantity={handleUpdateQuantity}
       />
     </React.Fragment>
   );
