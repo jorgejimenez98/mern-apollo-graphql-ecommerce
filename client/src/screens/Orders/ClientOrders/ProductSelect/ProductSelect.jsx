@@ -9,6 +9,11 @@ function ProductSelect({ list }) {
     setSelectedProducts(newProducts);
   };
 
+  const handleDelete = (item) => {
+    const listAux = selectedProducts.filter((x) => x.id !== item.id);
+    setSelectedProducts(listAux);
+  };
+
   return (
     <React.Fragment>
       <h3 className="text-center">Select Products</h3>
@@ -20,9 +25,13 @@ function ProductSelect({ list }) {
         getOptionValue={(item) => item.id}
         getOptionLabel={(item) => item.name}
         placeholder={"Select Product..."}
+        value={selectedProducts}
       />
 
-      <TableProductSelected list={selectedProducts} />
+      <TableProductSelected
+        list={selectedProducts}
+        handleDelete={handleDelete}
+      />
     </React.Fragment>
   );
 }
