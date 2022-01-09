@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Select from "react-select";
 import TableProductSelected from "../TableProductSelected/TableProductSelected";
 
 function ProductSelect({ list }) {
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
+
+  useEffect(() => {
+    updateTotalPrice();
+    // eslint-disable-next-line
+  }, [selectedProducts]);
 
   const handleChange = (newProducts) => {
     const newProductsAux = newProducts.map((item) => {
@@ -16,7 +21,6 @@ function ProductSelect({ list }) {
   const handleDelete = (item) => {
     const listAux = selectedProducts.filter((x) => x.id !== item.id);
     setSelectedProducts(listAux);
-    updateTotalPrice();
   };
 
   const handleUpdateQuantity = (newValue, index) => {
@@ -27,12 +31,14 @@ function ProductSelect({ list }) {
   };
 
   const updateTotalPrice = () => {
-    let newTotalPrice = 0;
-    if (selectedProducts.length !== 0) {
-      selectedProducts.forEach((item) => {
-        newTotalPrice += item.price * item.quantity;
-      });
+    if (selectedProducts.length === 0) {
+      setTotalPrice(0);
+      return;
     }
+    let newTotalPrice = 0;
+    selectedProducts.forEach((item) => {
+      newTotalPrice += item.price * item.quantity;
+    });
     setTotalPrice(newTotalPrice);
   };
 
