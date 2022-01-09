@@ -1,7 +1,8 @@
 import React from "react";
 import * as mui from "@mui/material";
+import { Delete } from "@mui/icons-material";
 
-function TableProductSelected({ list }) {
+function TableProductSelected({ list, handleDelete }) {
   return (
     <React.Fragment>
       {list.length !== 0 && (
@@ -30,7 +31,20 @@ function TableProductSelected({ list }) {
                     <mui.TableCell align="right">{row.price}</mui.TableCell>
                     <mui.TableCell align="right">{row.stock}</mui.TableCell>
                     <mui.TableCell align="right">Quantity</mui.TableCell>
-                    <mui.TableCell align="right">Delete</mui.TableCell>
+
+                    {/* Delete Button */}
+                    <mui.TableCell align="right">
+                      <mui.Tooltip
+                        title={`Deleet Product ${row.name}`}
+                        placement="bottom"
+                        aria-label="delete"
+                        TransitionComponent={mui.Zoom}
+                      >
+                        <mui.IconButton onClick={() => handleDelete(row)}>
+                          <Delete />
+                        </mui.IconButton>
+                      </mui.Tooltip>
+                    </mui.TableCell>
                   </mui.TableRow>
                 ))}
               </mui.TableBody>
